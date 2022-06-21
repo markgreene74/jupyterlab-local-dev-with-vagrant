@@ -4,16 +4,37 @@ A POC for building local dev environments for Jupyter with Vagrant
 See https://github.com/jupyterlab/jupyterlab/issues/12717 for more context.
 
 ## TODO
-- update the bootstrap
-- test the bootstrap
-- check the VM min specs
-- test on Linux [ ], macOS [ ], Windows [ ]
+- test on
+  - Linux [X]
+  - macOS [ ]
+  - Windows [ ]
 
 ## Overview
 
-TBA
+This project aims to investigate Vagrant/Virtualbox as a way to create and run a local dev environment for Jupyterlab.
+
+## Requirements
+
+- install Vagrant ([link](https://www.vagrantup.com/downloads))
+- install Virtualbox ([link](https://www.virtualbox.org/wiki/Downloads))
 
 ## Quickstart
 
-TBA
-
+- change the GitHub username in [`Vagrant-bootstrap.sh`](Vagrant-bootstrap.sh)
+- (optional) edit [`Vagrant-bootstrap.sh`](Vagrant-bootstrap.sh) to change the virtual machine specs (RAM, vCPU)
+- run `vagrant up`
+- (optional) to capture the provisioning logs run `vagrant up 2>&1 | tee -a vagrant-up-$(date +%F).log` instead
+- if successful the output should look like:
+  ```shell
+  ==> jupyter-dev-environment: This is a local dev environment for Jupyter based on Debian 11 (bullseye)
+  ```
+- login on the virtual machine with `vagrant ssh`
+- run
+  ```shell
+  cd ~/jupyterlab
+  jupyter lab --no-browser --ip 0.0.0.0 --dev-mode --watch
+  ```
+- copy and past the last link in your browser, it should look like:
+  ```shell
+  http://127.0.0.1:8888/lab?token=bb4a1ca...
+  ```
