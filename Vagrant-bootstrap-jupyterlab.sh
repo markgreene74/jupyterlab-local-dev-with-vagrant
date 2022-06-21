@@ -38,12 +38,14 @@ jupyter lab build    # Build the app dir assets (optional)
 ### final steps
 
 cat << EOF > /home/vagrant/instructions.txt
+See https://github.com/jupyterlab/jupyterlab/blob/master/docs/source/developer/contributing.rst#setting-up-a-local-development-environment
+
 - Run JupyterLab
 Start JupyterLab in development mode:
 
     jupyter lab --no-browser --ip 0.0.0.0 --dev-mode
 
-Development mode ensures that you are running the JavaScript assets that are built in the dev-installed Python package. Note that when running in dev mode, extensions will not be activated by default - refer :ref:`documentation on extension development <prebuilt_dev_workflow>` to know more.
+Development mode ensures that you are running the JavaScript assets that are built in the dev-installed Python package. Note that when running in dev mode, extensions will not be activated by default.
 
 When running in dev mode, a red stripe will appear at the top of the page; this is to indicate running an unreleased version.
 

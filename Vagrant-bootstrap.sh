@@ -1,9 +1,6 @@
 #! /usr/bin/env bash
 set -euxo pipefail
 
-export VM_USER=vagrant
-export VM_USER_HOME=/home/${VM_USER}
-
 ### helper functions
 
 function pip_update() {
@@ -48,24 +45,6 @@ echo "yarn:    \$(yarn --version)"
 EOF
 
 chmod +x /etc/update-motd.d/99-custom
-
-### nginx
-
-# TODO probably not needed
-
-# apt-get install nginx -y
-
-# cat << EOF > /etc/nginx/sites-available/default
-# server {
-#     listen 8080;
-#     location / {
-#         proxy_pass http://127.0.0.1:12345/;
-#     }
-# }
-# EOF
-
-# systemctl enable nginx
-# systemctl restart nginx
 
 ## Node.js and Yarn
 

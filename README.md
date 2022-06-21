@@ -1,5 +1,5 @@
 # jupyter-dev-environment-poc
-A POC for building local dev environments for Jupyter with Vagrant
+A POC for building local dev environments for Jupyterlab using Vagrant
 
 See https://github.com/jupyterlab/jupyterlab/issues/12717 for more context.
 
@@ -11,7 +11,7 @@ See https://github.com/jupyterlab/jupyterlab/issues/12717 for more context.
 
 ## Overview
 
-This project aims to investigate Vagrant/Virtualbox as a way to create and run a local dev environment for Jupyterlab.
+This project aims to investigate Vagrant/Virtualbox as a way to easily create, manage and run a local dev environment for Jupyterlab.
 
 ## Requirements
 
@@ -37,4 +37,24 @@ This project aims to investigate Vagrant/Virtualbox as a way to create and run a
 - copy and past the last link in your browser, it should look like:
   ```shell
   http://127.0.0.1:8888/lab?token=bb4a1ca...
+  ```
+
+## Other useful commands
+
+- stop the virtual machine
+  ```shell
+  vagrant halt
+  ```
+- remove the virtual machine
+  (NOTE: this will completely delete the vm, it will be provisioned from scratch the next time `vagrant up` is executed)
+  ```shell
+  vagrant destroy
+  ```
+- check the virtual machine status
+  ```shell
+  vagrant status
+  ```
+- re-run the provisioning scripts
+  ```shell
+  vagrant up --provision
   ```
