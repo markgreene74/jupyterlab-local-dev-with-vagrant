@@ -58,3 +58,27 @@ This project aims to investigate Vagrant/Virtualbox as a way to easily create, m
   ```shell
   vagrant up --provision
   ```
+
+### snapshots
+
+The ability to take/restore snapshots can be very useful. For more info see: https://www.vagrantup.com/docs/cli/snapshot.
+
+- list the available snapshots
+  ```shell
+  vagrant snapshot list
+  ```
+- save and restore, respectively, a snapshot without having to specify a name
+  > Warning: If you are using push and pop, avoid using save and restore which are unsafe to mix.
+  ```shell
+  vagrant snapshot push
+  ```
+  ```shell
+  vagrant snapshot pop
+  ```
+- save and restore, respectively, a snapshot without having to specify a name
+  ```shell
+  vagrant snapshot save <SNAPSHOT_NAME>
+  ```
+  ```shell
+  vagrant snapshot restore <SNAPSHOT_NAME>
+  ```
