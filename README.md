@@ -1,5 +1,6 @@
-# jupyter-dev-environment-poc
-A POC for building local dev environments for Jupyterlab using Vagrant.
+# jupyterlab-local-dev-with-vagrant
+
+A tool to build local development environments for JupyterLab using Vagrant.
 
 See https://github.com/jupyterlab/jupyterlab/issues/12717 for more context.
 
