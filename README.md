@@ -22,7 +22,7 @@ This project aims to investigate Vagrant/Virtualbox as a way to create, manage a
 
 ## Quickstart
 
-- change the `GITHUB_USERNAME` in [`Vagrant-bootstrap-jupyterlab.sh`](Vagrant-bootstrap.sh) if you wish to work on a fork
+- change the `GITHUB_USERNAME` in [`Vagrant-bootstrap-jupyterlab.sh`](Vagrant-bootstrap-jupyterlab.sh) if you wish to work on a fork
 
 - (*OPTIONAL*) edit [`Vagrant-bootstrap.sh`](Vagrant-bootstrap.sh) to change the virtual machine specs (RAM, vCPU)
 
