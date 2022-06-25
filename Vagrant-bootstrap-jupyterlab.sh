@@ -5,8 +5,9 @@ set -euxo pipefail
 
 ### user configuration
 
-# CHANGEME replace with your GH username before provisioning
-export GITHUB_USERNAME="markgreene74"
+# CHANGEME if you wish to use a fork replace GITHUB_USERNAME with your username before provisioning,
+#  otherwise the main repo (https://github.com/jupyterlab/jupyterlab.git) will be used
+export GITHUB_USERNAME="jupyterlab"
 
 ### env variables
 
