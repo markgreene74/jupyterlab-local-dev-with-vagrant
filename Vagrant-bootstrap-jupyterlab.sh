@@ -41,6 +41,10 @@ jupyter lab build    # Build the app dir assets (optional)
 cat << EOF > /home/vagrant/instructions.txt
 See https://github.com/jupyterlab/jupyterlab/blob/master/docs/source/developer/contributing.rst#setting-up-a-local-development-environment
 
+- Change directory to 'jupyterlab'
+
+    cd ~/jupyterlab/
+
 - Run JupyterLab
 Start JupyterLab in development mode:
 

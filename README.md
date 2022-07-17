@@ -121,3 +121,23 @@ You will **not** be able to `git push` changes upstream when logged in on the vi
 You will be able to use `git` and follow your normal workflow on the *host* OS.
 
 TBA
+
+## Troubleshooting
+
+### The environment is too slow / is taking too long to build
+
+The resources assigned to the Vagrant box are limited by default to 2 vCPU and 2 GB of memory.
+
+It is possible to increase the resources by modifying the following lines in the [Vagrantfile](./Vagrantfile#L8-9):
+
+```
+    v.memory = 2048  # CHANGEME if needed
+    v.cpus = 2       # CHANGEME if needed
+```
+
+Restart the Vagrant box to make the changes effective:
+
+```shell
+vagrant halt && vagrant up
+```
+ 
