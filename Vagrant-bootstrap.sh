@@ -66,7 +66,9 @@ yarn --version
 
 # create the directory /usr/share/jupyter
 mkdir -p /usr/share/jupyter
-chown vagrant:vagrant /usr/share/jupyter/
+chown -R vagrant:vagrant /usr/share/jupyter/
 
 # add a symlink python --> python3
-ln -s /usr/bin/python3 /usr/bin/python
+if ! [ -e /usr/bin/python ] ; then
+  ln -s /usr/bin/python3 /usr/bin/python
+fi
