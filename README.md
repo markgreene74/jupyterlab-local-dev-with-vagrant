@@ -128,7 +128,7 @@ TBA
 
 The resources assigned to the Vagrant box are limited by default to 2 vCPU and 2 GB of memory.
 
-It is possible to increase the resources by modifying the following lines in the [Vagrantfile](./Vagrantfile#L8-9):
+It is possible to increase the resources by modifying the following lines in the [Vagrantfile](./Vagrantfile#L8-L9):
 
 ```
     v.memory = 2048  # CHANGEME if needed
