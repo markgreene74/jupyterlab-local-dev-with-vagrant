@@ -21,7 +21,8 @@ function install_build_dependencies(){
 }
 
 ### apt update, install nice-to-have packages and build dependencies
-
+## change mirror, uncomment following and change mirror according to your location
+# sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 apt-get update
 apt-get upgrade -y
 apt-get install vim curl wget zip git -y
