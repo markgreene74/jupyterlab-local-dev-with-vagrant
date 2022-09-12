@@ -20,8 +20,12 @@ function install_build_dependencies(){
                   # libjpeg62-turbo
 }
 
-### apt update, install nice-to-have packages and build dependencies
+### use a specific mirror
+# a complete list of Debian mirrors can be found on this page: https://www.debian.org/mirror/list#complete-list
+# uncomment the line below and replace the example mirror (foo.bar.org) according to your location
+# sed -i 's/deb.debian.org/foo.bar.org/g' /etc/apt/sources.list
 
+### apt update, install nice-to-have packages and build dependencies
 apt-get update
 apt-get upgrade -y
 apt-get install vim curl wget zip git -y
