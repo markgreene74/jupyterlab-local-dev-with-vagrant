@@ -3,7 +3,7 @@ set -euxo pipefail
 
 # NOTE: this bootstrap need to be execute as the vagrant user
 
-### user configuration
+### git configuration
 
 # CHANGEME if you wish to use a fork replace GITHUB_USERNAME with your username before provisioning,
 #  otherwise the main repo (https://github.com/jupyterlab/jupyterlab.git) will be used
@@ -14,29 +14,10 @@ export GITHUB_USERNAME="jupyterlab"
 export VM_USER=vagrant
 export VM_USER_HOME=/home/${VM_USER}
 
-### Set up a local development environment
-# see https://github.com/jupyterlab/jupyterlab/blob/master/docs/source/developer/contributing.rst#setting-up-a-local-development-environment
+### additional vagrant user configuration
 
-# only clone during the first provisioning
-if [[ ! -d jupyterlab ]]; then
-  git clone https://github.com/${GITHUB_USERNAME}/jupyterlab.git
-  cd jupyterlab
-else
-  cd jupyterlab
-  git pull --rebase
-fi
-
-export PATH="$HOME/.local/bin:$PATH"
-pip install -e ".[test]"
-jlpm install
-
-echo "Please wait, this will take some time ..."
-
-jlpm run build       # Build the dev mode assets (optional)
-jlpm run build:core  # Build the core mode assets (optional)
-jupyter lab build    # Build the app dir assets (optional)
-
-### final steps
+# write the instructions file, make so it is called after each login,
+# add a custom section to bashrc
 
 cat << EOF > /home/vagrant/instructions.txt
 See https://github.com/jupyterlab/jupyterlab/blob/master/docs/source/developer/contributing.rst#setting-up-a-local-development-environment
@@ -79,3 +60,29 @@ export ADDITIONAL_INSTRUCTIONS='echo; echo $PWD; echo; ls ; echo; cat $HOME/inst
 if ! grep -qFx "${COMMENT}" ${USER_RC_FILE}; then
   echo -e "\n${COMMENT}\n# ${ADDITIONAL_PATH}\n${ADDITIONAL_INSTRUCTIONS}" | tee -a ${USER_RC_FILE}
 fi
+
+### Set up a Jupyterlab local development environment
+# see https://github.com/jupyterlab/jupyterlab/blob/master/docs/source/developer/contributing.rst#setting-up-a-local-development-environment
+
+# only clone during the first provisioning
+if [[ ! -d jupyterlab ]]; then
+  git clone https://github.com/${GITHUB_USERNAME}/jupyterlab.git
+  cd jupyterlab
+else
+  cd jupyterlab
+  git pull --rebase
+fi
+
+export PATH="$HOME/.local/bin:$PATH"
+pip install -e ".[dev,test]"
+jlpm install
+
+echo
+echo "Please wait, this will take some time ..."
+
+jlpm run build       # Build the dev mode assets (optional)
+jlpm run build:core  # Build the core mode assets (optional)
+jupyter lab build    # Build the app dir assets (optional)
+
+echo
+echo "All done, the Jupyterlab local development environment is ready"
