@@ -2,8 +2,6 @@
 
 A tool to build local development environments for JupyterLab using Vagrant.
 
-See https://github.com/jupyterlab/jupyterlab/issues/12717 for more context.
-
 ## Wiki
 
 The wiki can be found here: https://github.com/markgreene74/jupyterlab-local-dev-with-vagrant/wiki
@@ -16,7 +14,9 @@ The wiki can be found here: https://github.com/markgreene74/jupyterlab-local-dev
 
 ## Overview
 
-This project aims to investigate Vagrant/Virtualbox as a way to create, manage and run a local dev environment for Jupyterlab.
+The initial aim of this project was to investigate using Vagrant/Virtualbox to create, manage and run a local dev environment for Jupyterlab. See https://github.com/jupyterlab/jupyterlab/issues/12717 for more context.
+
+At this stage the project is functional and running a local Jupyterlab dev environment in Vagrant is a valid alternative, however it is still missing a lot of documentation. 
 
 ## Requirements
 
@@ -36,7 +36,7 @@ This project aims to investigate Vagrant/Virtualbox as a way to create, manage a
 - (*OPTIONAL*) to capture the provisioning logs run `vagrant up 2>&1 | tee -a vagrant-up-$(date +%F).log` instead
 
 - if successful the output should look like:
-  ```shell
+  ```
   ==> jupyter-dev-environment: This is a local dev environment for Jupyter based on Debian 11 (bullseye)
   ```
 
@@ -49,7 +49,7 @@ This project aims to investigate Vagrant/Virtualbox as a way to create, manage a
   ```
 
 - copy and paste the link containing the token in your browser, the link should look like:
-  ```shell
+  ```
   http://127.0.0.1:8888/lab?token=bb4a1ca...
   ```
 
