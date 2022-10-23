@@ -115,12 +115,11 @@ The diagram below shows the relationship between the different components: the _
 ```mermaid
 graph LR
     subgraph host
-        subgraph vagrant["Vagrant box"]
+        subgraph vagrant["Vagrant box<div></div> "]
             subgraph localdev["local dev environment"]
             clone["fa:fa-file-code jupyterlab (local)"]
-            style localdev fill:#c9cba3,stroke:#000,stroke-width:4px
-            style vagrant  fill:#e26d5c,stroke:#000,stroke-width:4px
-            style host     fill:#ffe1a8,stroke:#000,stroke-width:4px
+            style localdev stroke-dasharray: 8 2
+            style vagrant  stroke-dasharray: 5 5 1 5
             end
         end
     end
@@ -137,13 +136,12 @@ In this scenario:
 ```mermaid
 graph LR
     subgraph host
-        subgraph vagrant["Vagrant box"]
+        subgraph vagrant["Vagrant box<div></div> "]
             gh("github credentials")
-            subgraph localdev["local dev environment"]
+            subgraph localdev["local dev environment<div></div>/home/vagrant"]
             clone["fa:fa-file-code jupyterlab (local)"]
-            style localdev fill:#c9cba3,stroke:#000,stroke-width:4px,stroke-dasharray: 5 5
-            style vagrant  fill:#e26d5c,stroke:#000,stroke-width:4px
-            style host     fill:#ffe1a8,stroke:#000,stroke-width:4px
+            style localdev stroke-dasharray: 8 2
+            style vagrant  stroke-dasharray: 5 5 1 5
             end
         end
     end
@@ -166,12 +164,11 @@ graph LR
     subgraph host
         clone["fa:fa-file-code jupyterlab (local) fa:fa-folder"] === shared
         gh("github credentials")
-        subgraph vagrant["Vagrant box"]
-            subgraph localdev["local dev environment"]
+        subgraph vagrant["Vagrant box<div></div> "]
+            subgraph localdev["local dev environment<div></div>/vagrant"]
             shared["fa:fa-folder jupyterlab (local)"]
-            style localdev fill:#c9cba3,stroke:#000,stroke-width:4px,stroke-dasharray: 5 5
-            style vagrant  fill:#e26d5c,stroke:#000,stroke-width:4px
-            style host     fill:#ffe1a8,stroke:#000,stroke-width:4px
+            style localdev stroke-dasharray: 8 2
+            style vagrant  stroke-dasharray: 5 5 1 5
             end
         end
     end
