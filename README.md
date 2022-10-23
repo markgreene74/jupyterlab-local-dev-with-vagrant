@@ -4,6 +4,10 @@ A tool to build local development environments for JupyterLab using Vagrant.
 
 See https://github.com/jupyterlab/jupyterlab/issues/12717 for more context.
 
+## Wiki
+
+The wiki can be found here: https://github.com/markgreene74/jupyterlab-local-dev-with-vagrant/wiki
+
 ## TODO
 - test on
   - Linux [X]
