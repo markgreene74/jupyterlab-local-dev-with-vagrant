@@ -37,7 +37,9 @@ At this stage the project is functional and running a local Jupyterlab dev envir
 
 - if successful the output should look like:
   ```
-  ==> jupyter-dev-environment: This is a local dev environment for Jupyter based on Debian 11 (bullseye)
+        jupyter-dev-environment: All done, the Jupyterlab local development environment is ready
+    (...)
+    ==> jupyter-dev-environment: This is a local dev environment for Jupyter based on Debian 11 (bullseye)
   ```
 
 - login on the virtual machine with `vagrant ssh`
@@ -106,25 +108,78 @@ The ability to take/restore snapshots can be very useful. For more information s
 
 *Here be dragons*
 
-In this section we will discuss how Vagrant/VirtualBox can be integrated in a more advanced workflow.
+In this section we will discuss how Vagrant can be used as part of a more advanced workflow.
+
+The diagram below shows the relationship between the different components: the _local dev environment_ run inside the _Vagrant box_, which in turn run inside the host. 
+
+```mermaid
+graph LR
+    subgraph host
+        subgraph vagrant["Vagrant box"]
+            subgraph localdev["local dev environment"]
+            clone["fa:fa-file-code jupyterlab (local)"]
+            style localdev fill:#c9cba3,stroke:#000,stroke-width:4px
+            style vagrant  fill:#e26d5c,stroke:#000,stroke-width:4px
+            style host     fill:#ffe1a8,stroke:#000,stroke-width:4px
+            end
+        end
+    end
+```
 
 ### Use your `git` credentials inside the virtual machine
 
-In this scenario your `git` configuration and credentials will need to be copied inside the virtual machine.
+By default, the bootstrap script will set up a local dev environment from a clone *inside* the Vagrant box.
 
-You will be able to `git push` changes upstream when logged in on the virtual machine. 
+In this scenario:
+- `git` configuration and credentials need to be inside the Vagrant box
+- it will be possible to `git push` changes upstream while logged in on the Vagrant box 
 
-TBA
+```mermaid
+graph LR
+    subgraph host
+        subgraph vagrant["Vagrant box"]
+            gh("github credentials")
+            subgraph localdev["local dev environment"]
+            clone["fa:fa-file-code jupyterlab (local)"]
+            style localdev fill:#c9cba3,stroke:#000,stroke-width:4px,stroke-dasharray: 5 5
+            style vagrant  fill:#e26d5c,stroke:#000,stroke-width:4px
+            style host     fill:#ffe1a8,stroke:#000,stroke-width:4px
+            end
+        end
+    end
+    subgraph github
+        repo["fa:fa-file-code jupyterlab (origin)"] --pull--> clone
+        clone --push--> repo
+    end
+```
 
 ### Run `jupyterlab` in the shared `/vagrant` directory
 
-In this scenario there is no need to transfer your `git` configuration and credentials inside the virtual machine.
 
-You will **not** be able to `git push` changes upstream when logged in on the virtual machine. However, as the cloned repo is located in `/vagrant` in the virtual machine then any changes to the code will also be visible to the *host* OS.
 
-You will be able to use `git` and follow your normal workflow on the *host* OS.
+In this scenario:
+- there is no need to transfer `git` configuration and credentials inside the Vagrant box
+- it will be possible to use `git` and follow your normal workflow on the *host* OS
 
-TBA
+```mermaid
+graph LR
+    subgraph host
+        clone["fa:fa-file-code jupyterlab (local) fa:fa-folder"] === shared
+        gh("github credentials")
+        subgraph vagrant["Vagrant box"]
+            subgraph localdev["local dev environment"]
+            shared["fa:fa-folder jupyterlab (local)"]
+            style localdev fill:#c9cba3,stroke:#000,stroke-width:4px,stroke-dasharray: 5 5
+            style vagrant  fill:#e26d5c,stroke:#000,stroke-width:4px
+            style host     fill:#ffe1a8,stroke:#000,stroke-width:4px
+            end
+        end
+    end
+    subgraph github
+        repo["fa:fa-file-code jupyterlab (origin)"] --pull--> clone
+        clone --push--> repo
+    end
+```
 
 ## Troubleshooting
 
