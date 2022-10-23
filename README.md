@@ -137,8 +137,8 @@ In this scenario:
 graph LR
     subgraph host
         subgraph vagrant["Vagrant box<div></div> "]
-            gh("github credentials")
-            subgraph localdev["local dev environment<div></div>/home/vagrant"]
+            subgraph localdev["dev environment (/home/vagrant)"]
+            gh("github credentials") -.- clone
             clone["fa:fa-file-code jupyterlab (local)"]
             style localdev stroke-dasharray: 8 2
             style vagrant  stroke-dasharray: 5 5 1 5
@@ -146,8 +146,8 @@ graph LR
         end
     end
     subgraph github
-        repo["fa:fa-file-code jupyterlab (origin)"] --pull--> clone
-        clone --push--> repo
+        repo["fa:fa-file-code jupyterlab (origin)"] --pull---> clone
+        clone --push---> repo
     end
 ```
 
@@ -163,9 +163,9 @@ In this scenario:
 graph LR
     subgraph host
         clone["fa:fa-file-code jupyterlab (local) fa:fa-folder"] === shared
-        gh("github credentials")
+        gh("github credentials") -.- clone
         subgraph vagrant["Vagrant box<div></div> "]
-            subgraph localdev["local dev environment<div></div>/vagrant"]
+            subgraph localdev["dev environment (/vagrant)"]
             shared["fa:fa-folder jupyterlab (local)"]
             style localdev stroke-dasharray: 8 2
             style vagrant  stroke-dasharray: 5 5 1 5
@@ -173,8 +173,8 @@ graph LR
         end
     end
     subgraph github
-        repo["fa:fa-file-code jupyterlab (origin)"] --pull--> clone
-        clone --push--> repo
+        repo["fa:fa-file-code jupyterlab (origin)"] --pull---> clone
+        clone --push---> repo
     end
 ```
 
